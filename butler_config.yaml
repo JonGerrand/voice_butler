@@ -1,0 +1,35 @@
+---
+version:        0.1
+
+butler_name:    "Jarvis"
+
+host:         
+  name: "Jon"
+  titles:
+    - "Homie"
+    - "Gee"
+    - "Dude"
+    - "Man"
+
+# Greetings placed at the beginning of a prompt -> 
+# {salutation}, {prompt} 
+salutations:
+  - "What up"
+  - "Hey"
+  - "Sup"
+  - "Yo"
+  - "Hay"
+  - "Oye"
+
+time: 
+  date_time_format: "%H:%M"
+  # Used to introduce the time -> 
+  # {pre-prompt}, {time_introduction}, {time}
+  time_introductions: 
+    - "tis"
+    - "it's"
+    - "the time is"
+    - "the clock be like"
+    - "the clock says it's"
+    - "the clock seems to think it's"
+
