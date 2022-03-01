@@ -1,7 +1,8 @@
 import argparse
 import os
-import datetime
-import random
+
+
+import butler.pocket_watch as watch
 from typing import Dict
 import yaml
 
@@ -26,37 +27,10 @@ def extract_butler_config(config_path='') -> Dict:
     return conf_dict
 
 
-
-def tell_time(config, tone="informal") -> str:
-    """Get the butler to tell the time. 
-
-    Args:
-        tone (str, optional): Mode of speech. Defaults to 'informal'
-
-    Returns:
-        str: The formed text.
-    """
-    if tone == 'informal':
-        title = random.sample(config['host']['titles'], 1)[0]
-        salutation = random.sample(config['salutations'],1)[0]
-        time_address = random.sample(config['time']['time_introductions'],1)[0]
-        try: 
-            time = datetime.datetime.now().strftime(
-                    config['time']['date_time_format'])
-        except: 
-            time = datetime.datetime.now().strftime('%H:%M')
-        return f"{salutation} {title}, {time_address} {time}" 
-
-    else:
-        try: 
-            return f"The time is now {datetime.datetime.now().strftime(config['time']['date_time_format'])}"
-        except:
-            return f"The time is now {datetime.datetime.now().strftime('%H:%M')}"
-
 def announce_prompt(prompt: str) -> None:
     print (prompt)
 
 if __name__ == '__main__':
     config = extract_butler_config()
-    prompt = tell_time(config=config)
+    prompt = watch.tell_time(config=config)
     announce_prompt(prompt)
